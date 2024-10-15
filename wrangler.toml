@@ -9,4 +9,4 @@ kv_namespaces = [
 ]
 
 [ai]
-binding = "llama10"
+binding = "llama3"

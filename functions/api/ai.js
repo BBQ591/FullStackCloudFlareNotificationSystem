@@ -3,7 +3,7 @@ export async function onRequest(context) {
     console.log(env.llama10);
     if (request.method == "POST") {
         const requestBody = await request.json();
-        const stream = await env.llama10.run("@cf/meta/llama-3-8b-instruct", {
+        const stream = await env.llama3.run("@cf/meta/llama-3-8b-instruct", {
             stream: true,
             // max_tokens: 512,
             messages: [
