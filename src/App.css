@@ -60,6 +60,7 @@
 
 .notification-message {
   font-family: "Patrick Hand", cursive;
+  height: 60px;
 }
 
 .notification-timestamp {
