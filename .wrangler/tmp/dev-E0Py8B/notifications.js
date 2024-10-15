@@ -3,9 +3,9 @@ var __name = (target, value) => __defProp(target, "name", { value, configurable:
 
 // .wrangler/tmp/bundle-aYCdiL/checked-fetch.js
 var urls = /* @__PURE__ */ new Set();
-function checkURL(request2, init) {
-  const url = request2 instanceof URL ? request2 : new URL(
-    (typeof request2 === "string" ? new Request(request2, init) : request2).url
+function checkURL(request, init) {
+  const url = request instanceof URL ? request : new URL(
+    (typeof request === "string" ? new Request(request, init) : request).url
   );
   if (url.port && url.port !== "443" && url.protocol === "https:") {
     if (!urls.has(url.toString())) {
@@ -21,79 +21,31 @@ function checkURL(request2, init) {
 __name(checkURL, "checkURL");
 globalThis.fetch = new Proxy(globalThis.fetch, {
   apply(target, thisArg, argArray) {
-    const [request2, init] = argArray;
-    checkURL(request2, init);
+    const [request, init] = argArray;
+    checkURL(request, init);
     return Reflect.apply(target, thisArg, argArray);
   }
 });
 
 // functions/api/notifications.js
 var startTime = Date.now();
-async function onRequest(request2, env2) {
-  const url = new String(request2.url);
-  let kv1 = env2.kv1;
-  if (await kv1.get("notifications") == null) {
-    await kv1.put("notifications", "[]");
-  }
-  let newNotis = [];
-  if (request2.method === "POST") {
-    const requestBody = await request2.json();
-    try {
-      let value = JSON.parse(await kv1.get("notifications"));
-      if (Array.isArray(requestBody) == false) {
-        if (requestBody["type"] == null || requestBody["content"]["text"] == null || typeof requestBody["read"] != "boolean") {
-          throw new Error();
-        }
-        requestBody["timestamp"] = Date.now() - startTime;
-        requestBody["id"] = crypto.randomUUID();
-        value.push(requestBody);
-        newNotis.push(requestBody);
-      } else {
-        for (let i = 0; i < requestBody.length; i++) {
-          if (requestBody[i]["type"] == null || requestBody[i]["content"]["text"] == null || typeof requestBody[i]["read"] != "boolean") {
-            throw new Error("This is wrong");
-          }
-          requestBody[i]["timestamp"] = Date.now() - startTime;
-          requestBody[i]["id"] = crypto.randomUUID();
-          value.push(requestBody[i]);
-          newNotis.push(requestBody[i]);
-        }
-      }
-      await kv1.put("notifications", JSON.stringify(value));
-      return new Response(JSON.stringify(newNotis), { status: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "office", "Content-Type": "application/json" } });
-    } catch {
-      return new Response("Invalid Post", { status: 400, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "office", "Content-Type": "application/json" } });
-    }
-  }
-  if (request2.method == "GET") {
-    try {
-      return new Response(await kv1.get("notifications"), { status: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "office", "Content-Type": "application/json" } });
-    } catch {
-      return new Response("Invalid get", { status: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "office", "Content-Type": "application/json" } });
-    }
-  }
-  if (request2.method == "DELETE") {
-    await kv1.put("notifications", "[]");
-    return new Response(JSON.stringify({ "message": "Notifications deleted successfully!" }), { status: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "office", "Content-Type": "application/json" } });
-  }
-  return new Response("Not a valid command", { status: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "office", "Content-Type": "application/json" } });
+async function onRequest(request, env) {
 }
 __name(onRequest, "onRequest");
 var notifications_default = {
   async fetch() {
     return new Response("hello", { status: 200 });
-    return onRequest(request, env);
   }
 };
 
 // ../../../../opt/homebrew/lib/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts
-var drainBody = /* @__PURE__ */ __name(async (request2, env2, _ctx, middlewareCtx) => {
+var drainBody = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
   try {
-    return await middlewareCtx.next(request2, env2);
+    return await middlewareCtx.next(request, env);
   } finally {
     try {
-      if (request2.body !== null && !request2.bodyUsed) {
-        const reader = request2.body.getReader();
+      if (request.body !== null && !request.bodyUsed) {
+        const reader = request.body.getReader();
         while (!(await reader.read()).done) {
         }
       }
@@ -114,9 +66,9 @@ function reduceError(e) {
   };
 }
 __name(reduceError, "reduceError");
-var jsonError = /* @__PURE__ */ __name(async (request2, env2, _ctx, middlewareCtx) => {
+var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
   try {
-    return await middlewareCtx.next(request2, env2);
+    return await middlewareCtx.next(request, env);
   } catch (e) {
     const error = reduceError(e);
     return Response.json(error, {
@@ -140,7 +92,7 @@ function __facade_register__(...args) {
   __facade_middleware__.push(...args.flat());
 }
 __name(__facade_register__, "__facade_register__");
-function __facade_invokeChain__(request2, env2, ctx, dispatch, middlewareChain) {
+function __facade_invokeChain__(request, env, ctx, dispatch, middlewareChain) {
   const [head, ...tail] = middlewareChain;
   const middlewareCtx = {
     dispatch,
@@ -148,11 +100,11 @@ function __facade_invokeChain__(request2, env2, ctx, dispatch, middlewareChain) 
       return __facade_invokeChain__(newRequest, newEnv, ctx, dispatch, tail);
     }
   };
-  return head(request2, env2, ctx, middlewareCtx);
+  return head(request, env, ctx, middlewareCtx);
 }
 __name(__facade_invokeChain__, "__facade_invokeChain__");
-function __facade_invoke__(request2, env2, ctx, dispatch, finalMiddleware) {
-  return __facade_invokeChain__(request2, env2, ctx, dispatch, [
+function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
+  return __facade_invokeChain__(request, env, ctx, dispatch, [
     ...__facade_middleware__,
     finalMiddleware
   ]);
@@ -182,15 +134,15 @@ function wrapExportedHandler(worker) {
   for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__) {
     __facade_register__(middleware);
   }
-  const fetchDispatcher = /* @__PURE__ */ __name(function(request2, env2, ctx) {
+  const fetchDispatcher = /* @__PURE__ */ __name(function(request, env, ctx) {
     if (worker.fetch === void 0) {
       throw new Error("Handler does not export a fetch() function.");
     }
-    return worker.fetch(request2, env2, ctx);
+    return worker.fetch(request, env, ctx);
   }, "fetchDispatcher");
   return {
     ...worker,
-    fetch(request2, env2, ctx) {
+    fetch(request, env, ctx) {
       const dispatcher = /* @__PURE__ */ __name(function(type, init) {
         if (type === "scheduled" && worker.scheduled !== void 0) {
           const controller = new __Facade_ScheduledController__(
@@ -199,10 +151,10 @@ function wrapExportedHandler(worker) {
             () => {
             }
           );
-          return worker.scheduled(controller, env2, ctx);
+          return worker.scheduled(controller, env, ctx);
         }
       }, "dispatcher");
-      return __facade_invoke__(request2, env2, ctx, dispatcher, fetchDispatcher);
+      return __facade_invoke__(request, env, ctx, dispatcher, fetchDispatcher);
     }
   };
 }
@@ -215,13 +167,13 @@ function wrapWorkerEntrypoint(klass) {
     __facade_register__(middleware);
   }
   return class extends klass {
-    #fetchDispatcher = (request2, env2, ctx) => {
-      this.env = env2;
+    #fetchDispatcher = (request, env, ctx) => {
+      this.env = env;
       this.ctx = ctx;
       if (super.fetch === void 0) {
         throw new Error("Entrypoint class does not define a fetch() function.");
       }
-      return super.fetch(request2);
+      return super.fetch(request);
     };
     #dispatcher = (type, init) => {
       if (type === "scheduled" && super.scheduled !== void 0) {
@@ -234,9 +186,9 @@ function wrapWorkerEntrypoint(klass) {
         return super.scheduled(controller);
       }
     };
-    fetch(request2) {
+    fetch(request) {
       return __facade_invoke__(
-        request2,
+        request,
         this.env,
         this.ctx,
         this.#dispatcher,
