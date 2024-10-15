@@ -59,6 +59,7 @@ export async function onRequest(request, env) {
 
 export default {
     async fetch(request, env, ctx) {
+        return new Response("hello", {status:200});
         return onRequest(request, env);
     },
 };
