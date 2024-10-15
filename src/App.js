@@ -109,7 +109,7 @@ function App() {
     <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}>
       <div id="notification-feed">
         {notis.map((notification) => {
-          if (notification.read == true) {
+          if (notification.read === true) {
             return;
           }
           let color = "#ffcccb";
