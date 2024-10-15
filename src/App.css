@@ -4,6 +4,10 @@
   width: 100%;
   margin-right: 10px;
   margin-left: 10px;
+  flex: 1;
+  height:50%;
+  align-self: center;
+  text-align: center;
 }
 
 #notification-type {

@@ -61,7 +61,7 @@ function App() {
 
   return (
     <div className='container'>
-      <div style={{flex: 1, justifyContent:'center', alignItems:'center', display:'flex', textAlign:'center', height: "100vh" }}>
+      {/* <div style={{flex: 1, justifyContent:'center', alignItems:'center', display:'flex', textAlign:'center', height: "100vh" }}> */}
           <form id="notification-form">
               <h1 style={{fontSize:30, fontFamily:'Patrick Hand, cursive'}}>Create Notification</h1>
               <textarea
@@ -92,7 +92,7 @@ function App() {
           </form>
 
 
-      </div>
+      {/* </div> */}
 
 
     <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}>
