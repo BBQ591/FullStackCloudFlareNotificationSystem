@@ -11,5 +11,5 @@ kv_namespaces = [
 
 [[bindings]]
 type = "service"
-name = "AI_API_KEY"  # The name you will use in your code
-text = "your-ai-api-key"  # Your actual API key or secret
+name = "llama3"  # The name you will use in your code
+text = "f0M01klXEkb2nqHRL2_k-DiNXtsxp1TRyD_xWRwx"  # Your actual API key or secret
