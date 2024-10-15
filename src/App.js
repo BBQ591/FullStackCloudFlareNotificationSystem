@@ -20,8 +20,8 @@ function App() {
     const fetchNotifications = async () => {
       try {
         const baseUrl = process.env.NODE_ENV === 'production' 
-    ? 'https://notification-system.pages.dev/api' 
-    : 'http://localhost:8787/api';
+    ? 'https://notification-system.pages.dev/api/notifications' 
+    : 'http://localhost:8787/api/notifications';
           const response = await fetch(baseUrl);
           // console.log(result);
           // console.log(response);
