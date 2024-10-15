@@ -4,12 +4,17 @@ name = "notification-system"
 # Specify the output directory for the Pages build
 pages_build_output_dir = "./build"  # Adjust according to your project structure
 
+kv_namespaces = [
+    { binding = "kv1", id = "278ef0afd030434aa836e2691c2367d5" }
+]
+[[bindings]]
+type = "secret_text"
+name = "llama10"  # Binding name used in your code
+
 [[env.production]]
 kv_namespaces = [
     { binding = "kv1", id = "278ef0afd030434aa836e2691c2367d5" }
 ]
 
-
 [[env.production.secrets]]
-name = "llama10"  # This should match what you're using in your code
-text = "ot2VtLyXJ9ytsKpGxnlJQ37AxNBVh5rMpqZK662m"  # Your actual API key or secret
+name = "llama10"  # This matches what you use in your code
