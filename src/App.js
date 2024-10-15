@@ -61,7 +61,7 @@ function App() {
 
   };
 
-  const [notiType, setnotiType] = useState('');
+  const [notiType, setnotiType] = useState(null);
   
 
   return (
@@ -91,7 +91,7 @@ function App() {
             <p></p>
             <button
             type="submit"  // Event handler for button click
-            id="sent-notification-btn"
+            id="send-notification-btn"
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'grey'} // Change color on hover
             onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'white'} // Revert color on mouse out
           >

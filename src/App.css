@@ -27,7 +27,7 @@
   font-family: "Patrick Hand", cursive;
 }
 
-#sent-notification-btn {
+#send-notification-btn {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
