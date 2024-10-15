@@ -1,14 +1,9 @@
 name = "notification-system"
 type = "javascript"
-account_id = "897015974ef4bf532df9d9ee3578416f"
 
-main = "./functions/api/notifications.js"
+# Specify the output directory for the Pages build
+pages_build_output_dir = "./build"  # Adjust according to your project structure
 
-kv_namespaces = [
-    { binding = "kv1", id = "278ef0afd030434aa836e2691c2367d5" }
-]
-compatibility_date="2024-10-15"
 [[functions]]
 name = "notifications"
-path = "./functions/api/notifications.js"
-
+path = "./functions/api/notifications.js"  # Path to your function
