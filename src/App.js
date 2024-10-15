@@ -106,7 +106,7 @@ function App() {
       {/* // </div> */}
 
 
-    <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}>
+    {/* <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}> */}
       <div id="notification-feed">
         {notis.map((notification) => {
           if (notification.read === true) {
@@ -131,7 +131,7 @@ function App() {
 
       </div>
         
-    </div>
+    {/* </div> */}
     </div>
     
   );
