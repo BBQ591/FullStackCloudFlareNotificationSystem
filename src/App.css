@@ -2,8 +2,8 @@
   border: 3px solid rgba(0, 0, 0, 0.05);
   border-radius:10px;
   /* width: 100%; */
-  margin-right: 20px;
-  margin-left: 20px;
+  /* margin-right: 20px;
+  margin-left: 20px; */
   flex: 1;
   height:30%;
   align-self: center;
@@ -44,8 +44,8 @@
   height:400px;
   border: 3px solid rgba(0, 0, 0, 0.05);
   /* width: 100%; */
-  margin-right: 20px;
-  margin-left: 20px;
+  /* margin-right: 20px;
+  margin-left: 20px; */
   border-radius:10px;
   padding: 10px; /* Padding to prevent margin collapse */
   flex:1;
@@ -77,10 +77,11 @@
 
 .container {
   display: flex;
-  flex-direction: row;
-  align-items: center; /* Center horizontally */
-  justify-content: center; /* Center vertically */
-  height: 100vh; /* Set a height for the container */
+  flex-direction: row; /* Stack form and feed vertically */
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100vh;
 }
 
 
