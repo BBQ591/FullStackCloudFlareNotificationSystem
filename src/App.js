@@ -76,6 +76,7 @@ function App() {
               id="notification-type"
               value={notiType}
               onChange={handleNotiChange}
+              required
               >
               <option value="alert">Alert</option>
               <option value="info">Info</option>
