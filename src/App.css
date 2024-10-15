@@ -1,9 +1,9 @@
 #notification-form {
   border: 3px solid rgba(0, 0, 0, 0.05);
   border-radius:10px;
-  width: 100%;
-  margin-right: 10px;
-  margin-left: 10px;
+  /* width: 100%; */
+  margin-right: 20px;
+  margin-left: 20px;
   flex: 1;
   height:30%;
   align-self: center;
@@ -44,8 +44,8 @@
   height:400px;
   border: 3px solid rgba(0, 0, 0, 0.05);
   width: 100%;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
   border-radius:10px;
   padding: 10px; /* Padding to prevent margin collapse */
   flex:1;
