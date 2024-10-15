@@ -1,0 +1,7 @@
+name = "notification-system"
+type = "javascript"
+kv_namespaces = [
+    { binding = "kv1", id = "278ef0afd030434aa836e2691c2367d5" }
+]
+[build]
+main = "functions/api/notifications.js"
