@@ -1,4 +1,4 @@
-name = "cloudflare-oa"
+name = "notification-system"
 type = "javascript"
 
 [[kv_namespaces]]
