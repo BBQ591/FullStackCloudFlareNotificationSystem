@@ -64,7 +64,8 @@
 
 .notification-timestamp {
   font-family: "Patrick Hand", cursive;
-  padding-bottom: 5px;
+  padding-top: 0px;
+  margin-top:0px;
 }
 
 .container {
