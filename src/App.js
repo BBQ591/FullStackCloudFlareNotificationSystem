@@ -19,11 +19,13 @@ function App() {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-          const response = await fetch('https://billowing-darkness-7b8c.brianqu.workers.dev/api/notifications');
+          const response = await fetch('https://notification-system.pages.dev/api/notifications');
           // console.log(result);
+          // console.log(response);
+          // console.log(await response.json());
           setNotis((await response.json()).reverse());
       } catch (err) {
-          console.log("GET NOT WORKING");
+          console.log("HERE", err);
       }
   };
 
@@ -34,7 +36,7 @@ function App() {
     e.preventDefault();
 
     // Replace with your API endpoint
-    const apiUrl = 'https://billowing-darkness-7b8c.brianqu.workers.dev/api/notifications';
+    const apiUrl = 'https://notification-system.pages.dev/api/notifications';
 
     try {
       await fetch(apiUrl, {
@@ -53,7 +55,7 @@ function App() {
   
 
   return (
-    <div class='container'>
+    <div className='container'>
       <div style={{flex: 1, justifyContent:'center', alignItems:'center', display:'flex', textAlign:'center', height: "100vh" }}>
           <form id="notification-form">
               <h1 style={{fontSize:30, fontFamily:'Patrick Hand, cursive'}}>Create Notification</h1>
@@ -101,9 +103,9 @@ function App() {
             color = "#add8e6";
           }
     return (
-      <div key={notification.id} class="notification-card" style={{backgroundColor: color}}>
-        <p class="notification-message">{notification.content.text}</p>
-        <div class="notification-timestamp">
+      <div key={notification.id} className="notification-card" style={{backgroundColor: color}}>
+        <p className="notification-message">{notification.content.text}</p>
+        <div className="notification-timestamp">
           <p>{new moment(notification.timestamp).format("DD MMM YYYY, h:mma")}</p>
         </div>
       </div>
