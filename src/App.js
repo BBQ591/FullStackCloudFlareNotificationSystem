@@ -53,7 +53,7 @@ function App() {
   
 
   return (
-    <div style={{flexDirection:'row', display:"flex"}} class='container'>
+    <div class='container'>
       <div style={{flex: 1, justifyContent:'center', alignItems:'center', display:'flex', textAlign:'center', height: "100vh" }}>
           <form id="notification-form">
               <h1 style={{fontSize:30, fontFamily:'Patrick Hand, cursive'}}>Create Notification</h1>
