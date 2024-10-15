@@ -23,6 +23,7 @@ function App() {
           // console.log(result);
           // console.log(response);
           // console.log(await response.json());
+          console.log(response);
           setNotis((await response.json()).reverse());
       } catch (err) {
           console.log("HERE", err);
