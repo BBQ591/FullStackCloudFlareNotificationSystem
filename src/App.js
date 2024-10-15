@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-          const response = await fetch('/api/notifications');
+          const response = await fetch('https://billowing-darkness-7b8c.brianqu.workers.dev/api/notifications');
           // console.log(result);
           // console.log(response);
           // console.log(await response.json());
@@ -36,7 +36,7 @@ function App() {
     e.preventDefault();
 
     // Replace with your API endpoint
-    const apiUrl = '/api/notifications';
+    const apiUrl = 'https://billowing-darkness-7b8c.brianqu.workers.dev/api/notifications';
 
     try {
       await fetch(apiUrl, {
