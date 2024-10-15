@@ -1,5 +1,5 @@
 const startTime = Date.now();
-export async function onRequest(request, env) {
+// export async function onRequest(request, env) {
     // const url = new String(request.url);
     // let kv1 = env.kv1;
     // if (await kv1.get('notifications') == null) {
@@ -55,7 +55,7 @@ export async function onRequest(request, env) {
     //     return new Response(JSON.stringify({"message" : "Notifications deleted successfully!"}), {status: 200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS', 'Access-Control-Allow-Headers': 'office', 'Content-Type': 'application/json'}});
     // }
     // return new Response("Not a valid command", {status:200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS', 'Access-Control-Allow-Headers': 'office', 'Content-Type': 'application/json'}})
-}
+// }
 
 export default {
     async fetch() {

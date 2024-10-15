@@ -29,9 +29,6 @@ globalThis.fetch = new Proxy(globalThis.fetch, {
 
 // functions/api/notifications.js
 var startTime = Date.now();
-async function onRequest(request, env) {
-}
-__name(onRequest, "onRequest");
 var notifications_default = {
   async fetch() {
     return new Response("hello", { status: 200 });
@@ -207,7 +204,6 @@ if (typeof middleware_insertion_facade_default === "object") {
 var middleware_loader_entry_default = WRAPPED_ENTRY;
 export {
   __INTERNAL_WRANGLER_MIDDLEWARE__,
-  middleware_loader_entry_default as default,
-  onRequest
+  middleware_loader_entry_default as default
 };
 //# sourceMappingURL=notifications.js.map
