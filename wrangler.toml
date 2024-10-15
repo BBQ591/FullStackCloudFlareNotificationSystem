@@ -14,4 +14,4 @@ kv_namespaces = [
 
 [[env.production.bindings]]
 type = "secret_text"
-name = "f0M01klXEkb2nqHRL2_k-DiNXtsxp1TRyD_xWRwx"  # The name you will use in your code
+name = "llama3"  # The name you will use in your code

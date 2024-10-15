@@ -15,6 +15,7 @@ export async function onRequest(context) {
             const {value} = await reader.read();
             return new Response(JSON.stringify({"category": JSON.parse(decoder.decode(value, {stream: true}).slice(6)).response.toLowerCase()}), {status: 200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS', 'Access-Control-Allow-Headers': 'office', 'Content-Type': 'application/json'}});
     }
+    
     return new Response("CANT GET FROM AI", {status:200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS', 'Access-Control-Allow-Headers': 'office', 'Content-Type': 'application/json'}});
 
 }
