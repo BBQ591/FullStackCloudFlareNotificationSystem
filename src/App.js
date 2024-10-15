@@ -50,7 +50,7 @@ function App() {
         method: 'POST',
         body: JSON.stringify({ "type": notiType, "content": {"text": message}, "read": false }), // Send the data as JSON
       });
-      if (response.status !== 400) {
+      if (!response.ok) {
         setMessage("");
         setnotiType('');
       }
