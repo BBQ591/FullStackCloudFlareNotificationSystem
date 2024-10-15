@@ -8,3 +8,8 @@ pages_build_output_dir = "./build"  # Adjust according to your project structure
 kv_namespaces = [
     { binding = "kv1", id = "278ef0afd030434aa836e2691c2367d5" }
 ]
+
+[[bindings]]
+type = "service"
+name = "AI_API_KEY"  # The name you will use in your code
+text = "your-ai-api-key"  # Your actual API key or secret
