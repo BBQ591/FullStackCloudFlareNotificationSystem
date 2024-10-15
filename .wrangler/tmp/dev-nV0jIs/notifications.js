@@ -30,12 +30,12 @@ globalThis.fetch = new Proxy(globalThis.fetch, {
 // functions/api/notifications.js
 var startTime = Date.now();
 async function onRequest(request, env) {
+  const url = new String(request.url);
   let kv1 = env.kv1;
   if (await kv1.get("notifications") == null) {
     await kv1.put("notifications", "[]");
   }
   let newNotis = [];
-  const url = new String(request.url);
   if (request.method === "POST") {
     const requestBody = await request.json();
     try {
@@ -69,7 +69,7 @@ async function onRequest(request, env) {
     try {
       return new Response(await kv1.get("notifications"), { status: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "office", "Content-Type": "application/json" } });
     } catch {
-      return new Response("Invalid get", { status: 200 });
+      return new Response("Invalid get", { status: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "office", "Content-Type": "application/json" } });
     }
   }
   if (request.method == "DELETE") {
