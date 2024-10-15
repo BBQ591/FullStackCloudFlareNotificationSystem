@@ -66,8 +66,8 @@ function App() {
 
   return (
     <div className='container'>
-      <div style={{flex: 1, justifyContent:'center', alignItems:'center', display:'flex', textAlign:'center', height: "100vh" }}>
-        <div style={{  border: "3px solid rgba(0, 0, 0, 0.05)", borderRadius:"10px", width: "100%", marginRight: "10px", marginLeft: "10px"}}>
+      {/* <div style={{flex: 1, justifyContent:'center', alignItems:'center', display:'flex', textAlign:'center', height: "100vh" }}>
+        <div style={{  border: "3px solid rgba(0, 0, 0, 0.05)", borderRadius:"10px", width: "100%", marginRight: "10px", marginLeft: "10px"}}> */}
         <form onSubmit={handleSend} id="notification-form">
               <h1 style={{fontSize:30, fontFamily:'Patrick Hand, cursive'}}>Create Notification</h1>
               <textarea
@@ -88,9 +88,8 @@ function App() {
               <option value="info">Info</option>
               <option value="success">Success</option>
             </select>
-
-          </form>
-          <button
+            <p></p>
+            <button
             type="submit"  // Event handler for button click
             id="sent-notification-btn"
             onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'grey'} // Change color on hover
@@ -98,11 +97,13 @@ function App() {
           >
             Send
           </button>
-        </div>
+          </form>
+
+        {/* </div> */}
 
 
 
-      </div>
+      {/* // </div> */}
 
 
     <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}>
