@@ -59,12 +59,12 @@ export async function onRequest(request, env) {
     }
     if (request.method == "GET") {
         if (url.includes('notifications') == true) {
-            return new Response(await kv1.get('notifications'), {status:200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS', 'Access-Control-Allow-Headers': 'office', 'Content-Type': 'application/json'}});
+            return new Response(await kv1.get('notifications'), {status:200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS'}});
 
         }
         else if (url.includes('preferences')) {
             let preferences = JSON.stringify({"displayDuration": 5000, "preferredTypes": ["alert", "info"]});
-            const response = new Response(preferences, { status: 200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS', 'Access-Control-Allow-Headers': 'office', 'Content-Type': 'application/json'}});
+            const response = new Response(preferences, { status: 200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS'}});
             response.headers.append('Set-Cookie', 'preferences=' + preferences);
             return response;
         }
@@ -73,7 +73,7 @@ export async function onRequest(request, env) {
         await kv1.put('notifications', '[]');
         return new Response(JSON.stringify({"message" : "Notifications deleted successfully!"}), {status: 200});
     }
-    return new Response("Not a valid command", {status:200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS', 'Access-Control-Allow-Headers': 'office', 'Content-Type': 'application/json'}})
+    return new Response("Not a valid command", {status:200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS'}})
 }
 
 export default {
