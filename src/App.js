@@ -75,7 +75,6 @@ function App() {
               id="notification-type"
               value={notiType}
               onChange={handleNotiChange}
-              style={{ width: '50%', margin: '10px 0', borderRadius: 5, textAlign:'center', fontFamily:'Patrick Hand, cursive' }}
               >
               <option value="">--Message Type--</option>
               <option value="alert">Alert</option>
