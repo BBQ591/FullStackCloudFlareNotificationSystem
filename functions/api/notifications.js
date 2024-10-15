@@ -1,6 +1,7 @@
 const startTime = Date.now();
-export async function onRequest(request, env) {
-    const url = new String(request.url);
+export async function onRequest(context) {
+    // const url = new String(request.url);
+    let {env} = context;
     let kv1 = env.kv1;
     if (await kv1.get('notifications') == null) {
         await kv1.put('notifications', '[]');
