@@ -1,9 +1,4 @@
 name = "notification-system"
-type = "javascript"
 
 # Specify the output directory for the Pages build
 pages_build_output_dir = "./build"  # Adjust according to your project structure
-
-[[functions]]
-name = "notifications"
-path = "./functions/api/notifications.js"  # Path to your function
