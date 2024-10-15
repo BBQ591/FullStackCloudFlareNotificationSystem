@@ -14,7 +14,7 @@
 
 #notification-type {
   width: 50%;
-  margin: 10px 0;
+  margin: 10px;
   border-radius: 5;
   text-align:center;
   font-family: "Patrick Hand", cursive;
@@ -59,7 +59,7 @@
 
 .notification-card {
   height: 70px;
-  margin: 10px 0; /* Top and bottom margins */
+  margin: 10px; /* Top and bottom margins */
   /* padding: 10px; */
   border-radius: 5px;
   border: 1px solid transparent; /* Prevent margin collapse */
