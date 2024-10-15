@@ -1,5 +1,6 @@
 name = "notification-system"
 type = "javascript"
+account_id="897015974ef4bf532df9d9ee3578416f"
 kv_namespaces = [
     { binding = "kv1", id = "278ef0afd030434aa836e2691c2367d5" }
 ]
