@@ -1,12 +1,13 @@
 name = "notification-system"
 type = "javascript"
-account_id="897015974ef4bf532df9d9ee3578416f"
+account_id = "897015974ef4bf532df9d9ee3578416f"
+main = "./functions/api/notifications.js"
+
 kv_namespaces = [
     { binding = "kv1", id = "278ef0afd030434aa836e2691c2367d5" }
 ]
-[build]
-main = "functions/api/notifications.js"
-
+compatibility_date="2024-10-15"
 [[functions]]
 name = "notifications"
-path = "functions/api/notifications.js"  # Update the path accordingly
+path = "./functions/api/notifications.js"
+
