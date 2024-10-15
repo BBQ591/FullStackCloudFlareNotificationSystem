@@ -1,8 +1,8 @@
 const startTime = Date.now();
-export async function onRequest(request, env) {
-    let kv1 = env.kv1;
-    if (await kv1.get('notifications') == null) {
-        await kv1.put('notifications', '[]');
+export async function onRequest(request) {
+    const kv1 = {};
+    if (kv1.notifications == null) {
+        kv1.notifications = [];
     }
     let newNotis = [];
     const url = new String(request.url);
@@ -10,7 +10,7 @@ export async function onRequest(request, env) {
         const requestBody = await request.json();
         if (url.includes('notifications') == true) {
             try {
-                let value = JSON.parse(await kv1.get('notifications'));
+                let value = JSON.parse(kv1[notifications]);
                 if (Array.isArray(requestBody) == false) {
                     if (requestBody['type'] == null || requestBody['content']['text'] == null || typeof requestBody['read'] != "boolean") {
                         throw new Error();
@@ -34,7 +34,7 @@ export async function onRequest(request, env) {
                     }
                 }
         
-                await kv1.put('notifications', JSON.stringify(value));
+                kv1.notifications.push(value);
         
                 return new Response(JSON.stringify(newNotis), { status: 200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS', 'Access-Control-Allow-Headers': 'office', 'Content-Type': 'application/json'}});
             }
@@ -59,7 +59,7 @@ export async function onRequest(request, env) {
     }
     if (request.method == "GET") {
         if (url.includes('notifications') == true) {
-            return new Response(await kv1.get('notifications'), {status:200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS'}});
+            return new Response(JSON.stringify(kv1.notifications), {status:200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS'}});
 
         }
         else if (url.includes('preferences')) {
@@ -70,14 +70,14 @@ export async function onRequest(request, env) {
         }
     }
     if (request.method == "DELETE") {
-        await kv1.put('notifications', '[]');
+        kv1.notifications.put([]);
         return new Response(JSON.stringify({"message" : "Notifications deleted successfully!"}), {status: 200});
     }
     return new Response("Not a valid command", {status:200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS'}})
 }
 
 export default {
-    async fetch(request, env, ctx) {
-        return onRequest(request, env);
+    async fetch(request) {
+        return onRequest(request);
     },
 };
