@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-          const response = await fetch('http://localhost:8787/api/notifications');
+          const response = await fetch('https://notification-system.pages.dev/api/notifications');
           // console.log(result);
           // console.log(response);
           // console.log(await response.json());
@@ -37,7 +37,7 @@ function App() {
     e.preventDefault();
 
     // Replace with your API endpoint
-    const apiUrl = 'http://localhost:8787/api/notifications';
+    const apiUrl = 'https://notification-system.pages.dev/api/notifications';
 
     try {
       await fetch(apiUrl, {
