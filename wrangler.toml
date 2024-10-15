@@ -7,3 +7,7 @@ pages_build_output_dir = "./build"  # Adjust according to your project structure
 kv_namespaces = [
     { binding = "kv1", id = "278ef0afd030434aa836e2691c2367d5" }
 ]
+
+workers_ai = [
+    {binding="llama10", id="secret_text"}
+]
