@@ -110,7 +110,7 @@ function App() {
       <div id="notification-feed">
         {notis.map((notification) => {
           if (notification.read === true) {
-            return;
+            return null;
           }
           let color = "#ffcccb";
           if (notification.type === "success") {
