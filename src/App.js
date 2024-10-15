@@ -41,10 +41,12 @@ function App() {
     e.preventDefault();
 
     // Replace with your API endpoint
-    const apiUrl = '/api/notifications';
+    const baseUrl = process.env.NODE_ENV === 'production' 
+    ? 'https://notification-system.pages.dev/api/notifications' 
+    : 'http://localhost:8787/api/notifications';
 
     try {
-      await fetch(apiUrl, {
+      await fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify({ "type": notiType, "content": {"text": message}, "read": false }), // Send the data as JSON
       });
@@ -78,6 +80,7 @@ function App() {
               onChange={handleNotiChange}
               required
               >
+              <option value="">--Message Type--</option>
               <option value="alert">Alert</option>
               <option value="info">Info</option>
               <option value="success">Success</option>
