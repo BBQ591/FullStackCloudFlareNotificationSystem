@@ -49,6 +49,7 @@
   border-radius:10px;
   padding: 10px; /* Padding to prevent margin collapse */
   display:'flex';
+  
   /* font-family: "Patrick Hand", cursive; */
 }
 
@@ -57,6 +58,7 @@
   margin: 5px 0; /* Top and bottom margins */
   /* padding: 10px; */
   border-radius: 5px;
+  border: 1px solid transparent; /* Prevent margin collapse */
 }
 * {
   box-sizing: border-box; /* Include padding and border in height/width calculations */
