@@ -5,3 +5,7 @@ kv_namespaces = [
 ]
 [build]
 main = "functions/api/notifications.js"
+
+[[functions]]
+name = "notifications"
+path = "functions/api/notifications.js"  # Update the path accordingly
