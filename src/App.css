@@ -53,9 +53,12 @@
 .notification-card {
   height: 70px;
   margin: 10px 0; /* Top and bottom margins */
+  padding: 10px;
   border-radius: 5px;
 }
-
+* {
+  box-sizing: border-box; /* Include padding and border in height/width calculations */
+}
 .notification-message {
   /* font-family: "Patrick Hand", cursive; */
   flex:1;
