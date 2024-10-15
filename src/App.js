@@ -19,7 +19,10 @@ function App() {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-          const response = await fetch('https://notification-system.pages.dev/api/notifications');
+          const response = await fetch('https://notification-system.pages.dev/api/notifications', {method: "GET",     headers: {
+            'Authorization': `Bearer ${"Y4Co2sBTMykQ8E8B-kcpL0TD3RNzpxwiVbNZUzDx"}`,
+            'Content-Type': 'application/json',
+        }});
           // console.log(result);
           // console.log(response);
           // console.log(await response.json());
