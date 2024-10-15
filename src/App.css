@@ -54,12 +54,12 @@
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
-@media (min-width > 768px) {
+@media (max-width = 768px) {
   .container {
-    flex-direction: row;
+    flex-direction: column;
   }
   #notification-form {
     margin-bottom: 10px;
