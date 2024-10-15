@@ -34,8 +34,8 @@ function App() {
   //     }
   // };
 
-  fetchNotifications();
-  }, [])
+  // fetchNotifications();
+  // }, [])
 
   const handleSend = async (e) => {
     e.preventDefault();
