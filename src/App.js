@@ -16,7 +16,7 @@ function App() {
 
 
   const [notis, setNotis] = useState([])
-  // useEffect(() => {
+  useEffect(() => {
   //   const fetchNotifications = async () => {
   //     try {
   //       const baseUrl = process.env.NODE_ENV === 'production' 
@@ -35,7 +35,8 @@ function App() {
   // };
 
   // fetchNotifications();
-  // }, [])
+  setNotis([]);
+  }, [])
 
   const handleSend = async (e) => {
     e.preventDefault();
