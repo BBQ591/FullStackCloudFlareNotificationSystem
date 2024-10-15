@@ -46,16 +46,19 @@ function App() {
     : 'http://localhost:8787/api/notifications';
 
     try {
-      await fetch(baseUrl, {
+      const response = await fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify({ "type": notiType, "content": {"text": message}, "read": false }), // Send the data as JSON
       });
+      if (response.status != 400) {
+        setMessage("");
+        setnotiType('');
+      }
       // console.log(JSON.parse(response));
     } catch (error) {
       console.error('Error:', error);
     }
-    setMessage("");
-    setnotiType('');
+
   };
 
   const [notiType, setnotiType] = useState('');
@@ -80,7 +83,6 @@ function App() {
               onChange={handleNotiChange}
               required
               >
-              <option value="">--Message Type--</option>
               <option value="alert">Alert</option>
               <option value="info">Info</option>
               <option value="success">Success</option>
