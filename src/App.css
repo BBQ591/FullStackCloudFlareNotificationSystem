@@ -47,12 +47,14 @@
   margin-right: 10px;
   margin-left: 10px;
   border-radius:10px;
+  padding: 10px; /* Padding to prevent margin collapse */
+  display:'flex';
   /* font-family: "Patrick Hand", cursive; */
 }
 
 .notification-card {
   height: 70px;
-  margin: 5px 0; /* Top and bottom margins */
+  margin: 10px 0; /* Top and bottom margins */
   /* padding: 10px; */
   border-radius: 5px;
 }
