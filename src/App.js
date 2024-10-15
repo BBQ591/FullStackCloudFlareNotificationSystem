@@ -20,12 +20,13 @@ function App() {
     const fetchNotifications = async () => {
       try {
         const baseUrl = process.env.NODE_ENV === 'production' 
-    ? 'https://notification-system.pages.dev/api/notifications' 
-    : 'http://localhost:8787/api/notifications';
+    ? 'https://notification-system.pages.dev/api' 
+    : 'http://localhost:8787/api';
           const response = await fetch(baseUrl);
           // console.log(result);
           // console.log(response);
           // console.log(await response.json());
+          console.log(baseUrl);
           console.log(response);
           setNotis((await response.json()).reverse());
       } catch (err) {
