@@ -70,6 +70,7 @@ function App() {
                 onChange={handleMessageChange}
                 value={message}
                 placeholder='Message...'
+                required
               />
               <select
               id="notification-type"
