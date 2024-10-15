@@ -53,7 +53,6 @@
 .notification-card {
   height: 70px;
   margin: 10px 0; /* Top and bottom margins */
-  padding: 10px; /* Padding for content */
   border-radius: 5px;
 }
 
