@@ -59,12 +59,12 @@
 }
 
 .notification-message {
-  font-family: "Patrick Hand", cursive;
+  /* font-family: "Patrick Hand", cursive; */
   height: 30px;
 }
 
 .notification-timestamp {
-  font-family: "Patrick Hand", cursive;
+  /* font-family: "Patrick Hand", cursive; */
   height: 30px;
 }
 
