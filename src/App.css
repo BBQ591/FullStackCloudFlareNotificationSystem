@@ -1,14 +1,14 @@
 #notification-form {
-  border: 3px solid rgba(0, 0, 0, 0.05);
+  /* border: 3px solid rgba(0, 0, 0, 0.05);
   border-radius:10px;
   width: 100%;
   margin-right: 10px;
-  margin-left: 10px;
-  flex: 1;
+  margin-left: 10px; */
+  /* flex: 1;
   height:50%;
   align-self: center;
   text-align: center;
-  font-family: "Patrick Hand", cursive;
+  font-family: "Patrick Hand", cursive; */
 }
 
 #notification-type {
