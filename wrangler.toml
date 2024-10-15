@@ -8,6 +8,6 @@ kv_namespaces = [
     { binding = "kv1", id = "278ef0afd030434aa836e2691c2367d5" }
 ]
 
-[[bindings]]
-type = "secret_text"
-name = "llama3"  # This should match what you're using in your code
+[[env.production.secrets]]
+name = "llama10"  # This should match what you're using in your code
+text = "ot2VtLyXJ9ytsKpGxnlJQ37AxNBVh5rMpqZK662m"  # Your actual API key or secret
