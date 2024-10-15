@@ -66,7 +66,11 @@ async function onRequest(request, env) {
     }
   }
   if (request.method == "GET") {
-    return new Response(await kv1.get("notifications"), { status: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "office", "Content-Type": "application/json" } });
+    try {
+      return new Response(await kv1.get("notifications"), { status: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, GET, OPTIONS", "Access-Control-Allow-Headers": "office", "Content-Type": "application/json" } });
+    } catch {
+      return new Response("Invalid get", { status: 200 });
+    }
   }
   if (request.method == "DELETE") {
     await kv1.put("notifications", "[]");
