@@ -63,12 +63,12 @@
 
 .notification-message {
   /* font-family: "Patrick Hand", cursive; */
-  height: 30px;
+  flex:1;
 }
 
 .notification-timestamp {
   /* font-family: "Patrick Hand", cursive; */
-  height: 30px;
+  flex:1
 }
 
 .container {
