@@ -1,6 +1,8 @@
 name = "notification-system"
 type = "javascript"
 account_id = "897015974ef4bf532df9d9ee3578416f"
+pages_build_output_dir = "./build"  # Change this to your actual build output directory
+
 main = "./functions/api/notifications.js"
 
 kv_namespaces = [
