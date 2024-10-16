@@ -1,35 +1,29 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import { FixedSizeList as List } from "react-window";
-import AutoSizer from 'react-virtualized-auto-sizer';
+import { FixedSizeList as List } from 'react-window';
 
-const NotificationRender = ({notification}) => {
-    
-  // if (notification.read === true) {
-  //   return null;
-  // }
+const NotificationRender = ({ notification, style }) => {
   let color = "#ffcccb";
   if (notification.type === "success") {
     color = "#90ee90";
-  }
-  else if (notification.type === "info") {
+  } else if (notification.type === "info") {
     color = "#add8e6";
   }
+
   return (
-    <div key={notification.id} className="notification-card" style={{backgroundColor: color}}>
+    <div key={notification.id} className="notification-card" style={{ ...style, backgroundColor: color }}>
       <p className="notification-message">{notification.content.text}</p>
       <div className="notification-timestamp">
-        {new moment(notification.timestamp).format("DD MMM YYYY, h:mma")}
+        {moment(notification.timestamp).format("DD MMM YYYY, h:mma")}
       </div>
     </div>
-  )
-}
+  );
+};
+
 
 function App() {
   const [message, setMessage] = useState('');
-
-
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
@@ -44,10 +38,10 @@ function App() {
     const fetchNotifications = async () => {
       console.log("fetchingggg");
       try {
-        const baseUrl = process.env.NODE_ENV === 'production' 
-    ? 'https://notification-system.pages.dev/api/notifications' 
-    : 'http://localhost:8787/api/notifications';
-          // const baseUrl = 'https://notification-system.pages.dev/api/notifications'
+    //     const baseUrl = process.env.NODE_ENV === 'production' 
+    // ? 'https://notification-system.pages.dev/api/notifications' 
+    // : 'http://localhost:8787/api/notifications';
+            const baseUrl = 'https://notification-system.pages.dev/api/notifications' 
           const response = await fetch(baseUrl);
           // console.log(result);
           // console.log(response);
@@ -62,7 +56,7 @@ function App() {
 
   fetchNotifications();
 
-  const interval = setInterval(fetchNotifications, 4000); // 5000 ms = 5 seconds
+  const interval = setInterval(fetchNotifications, 5000); // 5000 ms = 5 seconds
 
   // Cleanup interval on component unmount
   return () => clearInterval(interval);
@@ -140,27 +134,22 @@ function App() {
 
 
     {/* <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}> */}
-    <div id="notification-feed">
-      <AutoSizer>
-        {({ height, width }) => (
-          <List
-            height={700} // Set height dynamically
-            itemCount={notis.length} // Total number of notifications
-            itemSize={75} // Fixed height for each notification card (adjust as necessary)
-            width={width} // Set width dynamically
-          >
-            {({ index, style }) => (
-              <div style={{...style}}>
-                <NotificationRender
-                  notification={notis[index]}
-                />
-              </div>
-
-            )}
-          </List>
+      <div id="notification-feed">
+      <List
+        height={400} // Set the height of the list container
+        itemCount={notis.length} // Total number of unread notifications
+        itemSize={75} // Fixed height for each notification card (adjust as necessary)
+        width="100%" // Set width of the list
+      >
+        {({ index, style }) => (
+          <NotificationRender
+            notification={notis[index]}
+            style={style}
+          />
         )}
-      </AutoSizer>
-    </div>
+      </List>
+
+      </div>
         
     {/* </div> */}
     </div>
