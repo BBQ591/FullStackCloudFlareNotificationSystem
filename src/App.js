@@ -69,34 +69,37 @@ function App() {
       {/* <div style={{flex: 1, justifyContent:'center', alignItems:'center', display:'flex', textAlign:'center', height: "100vh" }}>
         <div style={{  border: "3px solid rgba(0, 0, 0, 0.05)", borderRadius:"10px", width: "100%", marginRight: "10px", marginLeft: "10px"}}> */}
         <form onSubmit={handleSend} id="notification-form">
-              <h1 style={{fontSize:30, fontFamily:'Patrick Hand, cursive'}}>Create Notification</h1>
-              <textarea
-                type="text"
-                id="notification-message"
-                onChange={handleMessageChange}
-                value={message}
-                placeholder='Message...'
+          {/* <div id="div-notification"> */}
+            <h1 style={{fontSize:30, fontFamily:'Patrick Hand, cursive'}}>Create Notification</h1>
+                <textarea
+                  type="text"
+                  id="notification-message"
+                  onChange={handleMessageChange}
+                  value={message}
+                  placeholder='Message...'
+                  required
+                />
+                <select
+                id="notification-type"
+                value={notiType}
+                onChange={handleNotiChange}
                 required
-              />
-              <select
-              id="notification-type"
-              value={notiType}
-              onChange={handleNotiChange}
-              required
-              >
-              <option value="alert">Alert</option>
-              <option value="info">Info</option>
-              <option value="success">Success</option>
-            </select>
-            <p></p>
-            <button
-            type="submit"  // Event handler for button click
-            id="send-notification-btn"
-            onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'grey'} // Change color on hover
-            onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'white'} // Revert color on mouse out
-          >
-            Send
-          </button>
+                >
+                <option value="alert">Alert</option>
+                <option value="info">Info</option>
+                <option value="success">Success</option>
+              </select>
+              <p></p>
+              <button
+              type="submit"  // Event handler for button click
+              id="send-notification-btn"
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'grey'} // Change color on hover
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'white'} // Revert color on mouse out
+            >
+              Send
+            </button>
+          {/* </div> */}
+
           </form>
 
         {/* </div> */}
