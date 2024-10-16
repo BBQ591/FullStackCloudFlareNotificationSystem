@@ -70,7 +70,7 @@ function App() {
         <div style={{  border: "3px solid rgba(0, 0, 0, 0.05)", borderRadius:"10px", width: "100%", marginRight: "10px", marginLeft: "10px"}}> */}
         <form onSubmit={handleSend} id="notification-form">
           {/* <div id="div-notification"> */}
-            <h1 style={{fontSize:30, fontFamily:'Patrick Hand, cursive'}}>Create Notification</h1>
+            <h1>Create Notification</h1>
                 <textarea
                   type="text"
                   id="notification-message"
@@ -93,8 +93,8 @@ function App() {
               <button
               type="submit"  // Event handler for button click
               id="send-notification-btn"
-              onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'grey'} // Change color on hover
-              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'white'} // Revert color on mouse out
+              onMouseOver={(e) => {e.currentTarget.style.backgroundColor = '#363636'; e.currentTarget.style.color = 'white'}} // Change color on hover
+              onMouseOut={(e) => {e.currentTarget.style.backgroundColor = '#D3D3D3'; e.currentTarget.style.color = 'black'}} // Revert color on mouse out
             >
               Send
             </button>
