@@ -1,27 +1,26 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
+import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List } from 'react-window';
 
-const NotificationRender = ({ notification, style }) => {
+const Renderer = ({notification, style}) => {
   let color = "#ffcccb";
   if (notification.type === "success") {
     color = "#90ee90";
-  } else if (notification.type === "info") {
+  }
+  else if (notification.type === "info") {
     color = "#add8e6";
   }
-
   return (
-    <div key={notification.id} className="notification-card" style={{ ...style, backgroundColor: color }}>
+    <div key={notification.id} className="notification-card" style={{backgroundColor: color}}>
       <p className="notification-message">{notification.content.text}</p>
       <div className="notification-timestamp">
-        {moment(notification.timestamp).format("DD MMM YYYY, h:mma")}
+        {new moment(notification.timestamp).format("DD MMM YYYY, h:mma")}
       </div>
     </div>
-  );
-};
-
-
+  )
+}
 function App() {
   const [message, setMessage] = useState('');
 
@@ -41,7 +40,7 @@ function App() {
     //     const baseUrl = process.env.NODE_ENV === 'production' 
     // ? 'https://notification-system.pages.dev/api/notifications' 
     // : 'http://localhost:8787/api/notifications';
-            const baseUrl = 'https://notification-system.pages.dev/api/notifications' 
+    const baseUrl = 'https://notification-system.pages.dev/api/notifications' ;
           const response = await fetch(baseUrl);
           // console.log(result);
           // console.log(response);
@@ -135,19 +134,16 @@ function App() {
 
     {/* <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}> */}
       <div id="notification-feed">
-      <List
-        height={400} // Set the height of the list container
-        itemCount={notis.length} // Total number of unread notifications
-        itemSize={75} // Fixed height for each notification card (adjust as necessary)
-        width="100%" // Set width of the list
-      >
-        {({ index, style }) => (
-          <NotificationRender
-            notification={notis[index]}
-            style={style}
-          />
+      <List height={400} itemCount={notis.length} itemSize={80}>
+
+        {({index, style}) => (
+          <div style={style}>
+          <Renderer notification={notis[index]} style={style}/>
+          </div>
         )}
-      </List>
+        
+        </List>
+
 
       </div>
         
