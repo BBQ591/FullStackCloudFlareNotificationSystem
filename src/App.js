@@ -18,6 +18,7 @@ function App() {
   const [notis, setNotis] = useState([])
   useEffect(() => {
     const fetchNotifications = async () => {
+      console.log("fetchingggg");
       try {
         const baseUrl = process.env.NODE_ENV === 'production' 
     ? 'https://notification-system.pages.dev/api/notifications' 
@@ -35,6 +36,11 @@ function App() {
   };
 
   fetchNotifications();
+
+  const interval = setInterval(fetchNotifications, 5000); // 5000 ms = 5 seconds
+
+  // Cleanup interval on component unmount
+  return () => clearInterval(interval);
   }, [])
 
   const handleSend = async (e) => {
@@ -60,7 +66,6 @@ function App() {
     }
 
   };
-
   const [notiType, setnotiType] = useState(null);
   
 
