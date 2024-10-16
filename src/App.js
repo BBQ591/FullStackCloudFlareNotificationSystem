@@ -61,7 +61,7 @@ function App() {
     }
 
   };
-  const [notiType, setnotiType] = useState(null);
+  const [notiType, setnotiType] = useState("alert");
   
 
   return (
