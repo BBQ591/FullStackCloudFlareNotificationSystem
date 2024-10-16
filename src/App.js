@@ -4,7 +4,7 @@ import moment from 'moment';
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from 'react-virtualized-auto-sizer';
 
-const NotificationRender = ({style, notification}) => {
+const NotificationRender = ({notification}) => {
     
   // if (notification.read === true) {
   //   return null;
@@ -17,7 +17,7 @@ const NotificationRender = ({style, notification}) => {
     color = "#add8e6";
   }
   return (
-    <div key={notification.id} className="notification-card" style={{...style,backgroundColor: color}}>
+    <div key={notification.id} className="notification-card" style={{backgroundColor: color}}>
       <p className="notification-message">{notification.content.text}</p>
       <div className="notification-timestamp">
         {new moment(notification.timestamp).format("DD MMM YYYY, h:mma")}
@@ -47,6 +47,7 @@ function App() {
         const baseUrl = process.env.NODE_ENV === 'production' 
     ? 'https://notification-system.pages.dev/api/notifications' 
     : 'http://localhost:8787/api/notifications';
+          // const baseUrl = 'https://notification-system.pages.dev/api/notifications'
           const response = await fetch(baseUrl);
           // console.log(result);
           // console.log(response);
@@ -61,7 +62,7 @@ function App() {
 
   fetchNotifications();
 
-  const interval = setInterval(fetchNotifications, 5000); // 5000 ms = 5 seconds
+  const interval = setInterval(fetchNotifications, 4000); // 5000 ms = 5 seconds
 
   // Cleanup interval on component unmount
   return () => clearInterval(interval);
@@ -143,16 +144,18 @@ function App() {
       <AutoSizer>
         {({ height, width }) => (
           <List
-            height={height} // Set height dynamically
+            height={700} // Set height dynamically
             itemCount={notis.length} // Total number of notifications
-            itemSize={70} // Fixed height for each notification card (adjust as necessary)
+            itemSize={75} // Fixed height for each notification card (adjust as necessary)
             width={width} // Set width dynamically
           >
             {({ index, style }) => (
-              <NotificationRender
-                style={style}
-                notifications={notis[index]}
-              />
+              <div style={{...style}}>
+                <NotificationRender
+                  notification={notis[index]}
+                />
+              </div>
+
             )}
           </List>
         )}
