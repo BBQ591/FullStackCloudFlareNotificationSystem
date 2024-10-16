@@ -4,14 +4,32 @@ import moment from 'moment';
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from 'react-virtualized-auto-sizer';
 
-
-function App() {
-  const notificationRender = ({index, style}) => (
-    <div style={style}>
-      {notis[index]}
+const NotificationRender = ({style, notification}) => {
+    
+  // if (notification.read === true) {
+  //   return null;
+  // }
+  let color = "#ffcccb";
+  if (notification.type === "success") {
+    color = "#90ee90";
+  }
+  else if (notification.type === "info") {
+    color = "#add8e6";
+  }
+  return (
+    <div key={notification.id} className="notification-card" style={{...style,backgroundColor: color}}>
+      <p className="notification-message">{notification.content.text}</p>
+      <div className="notification-timestamp">
+        {new moment(notification.timestamp).format("DD MMM YYYY, h:mma")}
+      </div>
     </div>
   )
+}
+
+function App() {
   const [message, setMessage] = useState('');
+
+
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
@@ -35,7 +53,7 @@ function App() {
           // console.log(await response.json());
           console.log(baseUrl);
           console.log(response);
-          setNotis((await response.json()).reverse());
+          setNotis((await response.json()).reverse().filter(notification => !notification.read));
       } catch (err) {
           console.log("HERE", err);
       }
@@ -121,15 +139,25 @@ function App() {
 
 
     {/* <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}> */}
-      <div id="notification-feed">
-        <AutoSizer>
-          {({height, width}) => (
-            <List height={height} itemCount={notis.length} itemSize={70} width={width}>
-              {notificationRender}
-            </List>
-          )}
-        </AutoSizer>
-      </div>
+    <div id="notification-feed">
+      <AutoSizer>
+        {({ height, width }) => (
+          <List
+            height={height} // Set height dynamically
+            itemCount={notis.length} // Total number of notifications
+            itemSize={70} // Fixed height for each notification card (adjust as necessary)
+            width={width} // Set width dynamically
+          >
+            {({ index, style }) => (
+              <NotificationRender
+                style={style}
+                notifications={notis[index]}
+              />
+            )}
+          </List>
+        )}
+      </AutoSizer>
+    </div>
         
     {/* </div> */}
     </div>
