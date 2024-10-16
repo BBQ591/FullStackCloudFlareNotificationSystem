@@ -34,7 +34,7 @@ function App() {
 
   fetchNotifications();
 
-  const interval = setInterval(fetchNotifications, 5000); // 5000 ms = 5 seconds
+  const interval = setInterval(fetchNotifications, 4000); // 5000 ms = 5 seconds
 
   // Cleanup interval on component unmount
   return () => clearInterval(interval);
@@ -44,9 +44,7 @@ function App() {
     e.preventDefault();
 
     // Replace with your API endpoint
-    const baseUrl = process.env.NODE_ENV === 'production' 
-    ? 'https://notification-system.pages.dev/api/notifications' 
-    : 'http://localhost:8787/api/notifications';
+    const baseUrl ='https://notification-system.pages.dev/api/notifications' 
 
     try {
       const response = await fetch(baseUrl, {
