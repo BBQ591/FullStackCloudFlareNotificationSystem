@@ -1,10 +1,16 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-
+import { FixedSizeList as List } from "react-window";
+import AutoSizer from 'react-virtualized-auto-sizer';
 
 
 function App() {
+  const notificationRender = ({index, style}) => (
+    <div style={style}>
+      {notis[index]}
+    </div>
+  )
   const [message, setMessage] = useState('');
 
   const handleMessageChange = (e) => {
@@ -116,27 +122,13 @@ function App() {
 
     {/* <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}> */}
       <div id="notification-feed">
-        {notis.map((notification) => {
-          if (notification.read === true) {
-            return null;
-          }
-          let color = "#ffcccb";
-          if (notification.type === "success") {
-            color = "#90ee90";
-          }
-          else if (notification.type === "info") {
-            color = "#add8e6";
-          }
-    return (
-      <div key={notification.id} className="notification-card" style={{backgroundColor: color}}>
-        <p className="notification-message">{notification.content.text}</p>
-        <div className="notification-timestamp">
-          {new moment(notification.timestamp).format("DD MMM YYYY, h:mma")}
-        </div>
-      </div>
-    )})
-        }
-
+        <AutoSizer>
+          {({height, width}) => (
+            <List height={height} itemCount={notis.length} itemSize={70} width={width}>
+              {notificationRender}
+            </List>
+          )}
+        </AutoSizer>
       </div>
         
     {/* </div> */}
