@@ -108,5 +108,10 @@ align-content: center;
   }
   #notification-form{
     height: None;
+    width: 100vw;
+  }
+  #notification-feed{
+    height: None;
+    width: 100vw;
   }
 }

@@ -36,10 +36,10 @@ function App() {
     const fetchNotifications = async () => {
       console.log("fetchingggg");
       try {
-        const baseUrl = process.env.NODE_ENV === 'production' 
-    ? 'https://notification-system.pages.dev/api/notifications' 
-    : 'http://localhost:8787/api/notifications';
-    // const baseUrl = 'https://notification-system.pages.dev/api/notifications' ;
+    //     const baseUrl = process.env.NODE_ENV === 'production' 
+    // ? 'https://notification-system.pages.dev/api/notifications' 
+    // : 'http://localhost:8787/api/notifications';
+    const baseUrl = 'https://notification-system.pages.dev/api/notifications' ;
           const response = await fetch(baseUrl);
           // console.log(result);
           // console.log(response);
@@ -132,6 +132,7 @@ function App() {
 
 
     {/* <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}> */}
+
       <div id="notification-feed">
       <List height={400} itemCount={notis.length} itemSize={80}>
 
@@ -143,9 +144,8 @@ function App() {
         
         </List>
 
-
       </div>
-        
+
     {/* </div> */}
     </div>
     
