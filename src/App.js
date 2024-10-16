@@ -138,7 +138,7 @@ function App() {
 
         {({index, style}) => (
           <div style={style}>
-          <Renderer notification={notis[index]} style={style}/>
+          <Renderer notification={notis[index]}/>
           </div>
         )}
         
