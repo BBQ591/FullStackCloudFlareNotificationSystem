@@ -1,25 +1,8 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import moment from 'moment';
-import { FixedSizeList as List } from 'react-window';
+import VirtualizedList from './VirtualizedList';
 
-const Renderer = ({notification, style}) => {
-  let color = "#ffcccb";
-  if (notification.type === "success") {
-    color = "#90ee90";
-  }
-  else if (notification.type === "info") {
-    color = "#add8e6";
-  }
-  return (
-    <div key={notification.id} className="notification-card" style={{backgroundColor: color}}>
-      <p className="notification-message">{notification.content.text}</p>
-      <div className="notification-timestamp">
-        {new moment(notification.timestamp).format("DD MMM YYYY, h:mma")}
-      </div>
-    </div>
-  )
-}
+
 function App() {
   const [message, setMessage] = useState('');
 
@@ -36,17 +19,14 @@ function App() {
     const fetchNotifications = async () => {
       console.log("fetchingggg");
       try {
-    //     const baseUrl = process.env.NODE_ENV === 'production' 
-    // ? 'https://notification-system.pages.dev/api/notifications' 
-    // : 'http://localhost:8787/api/notifications';
-    const baseUrl = 'https://notification-system.pages.dev/api/notifications' ;
+        const baseUrl ='https://notification-system.pages.dev/api/notifications' 
           const response = await fetch(baseUrl);
           // console.log(result);
           // console.log(response);
           // console.log(await response.json());
           console.log(baseUrl);
           console.log(response);
-          setNotis((await response.json()).reverse().filter(notification => !notification.read));
+          setNotis((await response.json()).reverse());
       } catch (err) {
           console.log("HERE", err);
       }
@@ -54,7 +34,7 @@ function App() {
 
   fetchNotifications();
 
-  const interval = setInterval(fetchNotifications, 4000); // 5000 ms = 5 seconds
+  const interval = setInterval(fetchNotifications, 5000); // 5000 ms = 5 seconds
 
   // Cleanup interval on component unmount
   return () => clearInterval(interval);
@@ -132,20 +112,8 @@ function App() {
 
 
     {/* <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}> */}
-
-      {/* <div id="notification-feed"> */}
-      <List id="notification-feed" style={{flex:1, width:'100%', border: '1px solid black', borderRadius:'10px'}} height={400} itemCount={notis.length} itemSize={80}>
-
-        {({index, style}) => (
-          <div style={style}>
-          <Renderer notification={notis[index]}/>
-          </div>
-        )}
+      <VirtualizedList itemHeight={80} containerHeight={400} notis={notis}/>
         
-        </List>
-
-      {/* </div> */}
-
     {/* </div> */}
     </div>
     
