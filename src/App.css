@@ -52,6 +52,7 @@ border-radius:10px;
   border-radius: 7.5px;
   width: 45%;
   background-color: #D3D3D3;
+  color:black;
   /* margin-bottom: 5px; */
   /* font-family: "Patrick Hand", cursive; */
 }
@@ -99,6 +100,7 @@ border-radius:10px;
   -webkit-line-clamp: 3; /* Change this number as needed */
   overflow: hidden;
   text-overflow: ellipsis;
+  
 
 }
 
