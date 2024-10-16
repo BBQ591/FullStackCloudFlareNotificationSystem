@@ -133,8 +133,8 @@ function App() {
 
     {/* <div style={{flex:1, justifyContent:'center', alignItems:'center', display:'flex', height: "100vh" }}> */}
 
-      {/* <div id="notification-feed"> */}
-      <List id="notification-feed" style={{flex:1,border: "1px solid black", borderRadius:'10px',padding: '10px'}} height={400} itemCount={notis.length} itemSize={80}>
+      <div id="notification-feed">
+      <List height={400} itemCount={notis.length} itemSize={80}>
 
         {({index, style}) => (
           <div style={style}>
@@ -144,7 +144,7 @@ function App() {
         
         </List>
 
-      {/* </div> */}
+      </div>
 
     {/* </div> */}
     </div>
