@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List } from 'react-window';
 
 const Renderer = ({notification, style}) => {
