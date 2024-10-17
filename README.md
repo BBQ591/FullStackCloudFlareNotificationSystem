@@ -1,5 +1,5 @@
 ### Project Goals
-This web app mainly allows users to create notifications and save them in a database. On the backend, javascript and cloudflare's services were used to handle POST, GET, and DELETE requests to access and change the notifications in the database. The frontend was developed using React.js to display the notifications on the right side of the screen that were added via the form on the left side.
+This web app mainly allows users to create and store notifications. On the backend, javascript and cloudflare's services were used to handle POST, GET, and DELETE requests to access and change the notifications in the database. The frontend was developed using React.js to display the notifications on the right side of the screen that were added by the user via the form on the left side.
 
 ### File Locations
 Frontend Development:
