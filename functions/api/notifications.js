@@ -12,10 +12,11 @@ export async function onRequest(context) {
     }
 
     if (request.method === "POST") {
-        //notifications from this request
-        let newNotifications = await request.json();
 
         try {
+            //notifications from this request
+            let newNotifications = (await request.json());
+
             //previous notifications
             let kv1Notifications = JSON.parse(await kv1.get('notifications'));
 
