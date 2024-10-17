@@ -21,7 +21,7 @@ function NotificationForm() {
           //makes sure that the post request was valid
           if (response.ok) {
             setMessage("");
-            setnotificationType("");
+            setnotificationType("alert");
           }
         } catch (error) {
           console.error("POST REQUEST NOT WORKING: ", error);

@@ -1,8 +1,7 @@
+//startTime for timestamp
+const startTime = Date.now();
+
 export async function onRequest(context) {
-    //startTime for timestamp
-    const startTime = Date.now();
-
-
     let {request, env} = context;
 
     //defining my key value
