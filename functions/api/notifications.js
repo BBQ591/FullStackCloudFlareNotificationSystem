@@ -15,7 +15,7 @@ export async function onRequest(context) {
 
         try {
             //notifications from this request
-            let newNotifications = (await request.json());
+            let newNotifications = await request.json();
 
             //previous notifications
             let kv1Notifications = JSON.parse(await kv1.get('notifications'));
