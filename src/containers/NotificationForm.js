@@ -26,8 +26,8 @@ function NotificationForm() {
         } catch (error) {
           console.error("POST REQUEST NOT WORKING: ", error);
         }
+    };
     
-      };
     return (
         <form onSubmit={handleSend} id="notification-form">
 

@@ -11,7 +11,6 @@ export async function onRequest(context) {
     }
 
     if (request.method === "POST") {
-
         try {
             //notifications from this request
             let newNotifications = await request.json();

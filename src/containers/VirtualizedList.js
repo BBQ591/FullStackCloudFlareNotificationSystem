@@ -9,22 +9,22 @@ function VirtualizedList() {
 
     // fetching data from kv
     useEffect(() => {
-        //notification fetching function
-        const fetchNotifications = async () => {
-          try {
-            const url ='https://notification-system.pages.dev/api/notifications' 
-            const response = await fetch(url);
-            setNotifications((await response.json()).reverse());
-          } catch (err) {
-              console.log("FETCHING IS NOT WORKING: ", err);
-          }
-        };
-        fetchNotifications();
+      //notification fetching function
+      const fetchNotifications = async () => {
+        try {
+          const url ='https://notification-system.pages.dev/api/notifications' 
+          const response = await fetch(url);
+          setNotifications((await response.json()).reverse());
+        } catch (err) {
+            console.log("FETCHING IS NOT WORKING: ", err);
+        }
+      };
+      fetchNotifications();
 
-        //interval to make sure that a fetch request is made every 4 seconds
-        const interval = setInterval(fetchNotifications, 4000);
-        return () => clearInterval(interval);
-      }, [])
+      //interval to make sure that a fetch request is made every 4 seconds
+      const interval = setInterval(fetchNotifications, 4000);
+      return () => clearInterval(interval);
+    }, [])
 
     //notificationHeight represents the height of each notification box
     //this is 80 pixels because the notification card is 70 pixels but there needs to be padding between the cards
