@@ -21,7 +21,7 @@ export async function onRequest(context) {
             let kv1Notifications = JSON.parse(await kv1.get('notifications'));
 
             //standarizing data structure of newNotifications to be a list of notifications
-            if (Array.isArray(requestBody) == false) {
+            if (Array.isArray(newNotifications) == false) {
                 newNotifications = [newNotifications];
             }
 
