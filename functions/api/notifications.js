@@ -11,12 +11,13 @@ export async function onRequest(context) {
     }
 
     if (request.method === "POST") {
+
         try {
             //notifications from this request
             let newNotifications = await request.json();
 
             //previous notifications
-            let kv1 = JSON.parse(await kv1.get('notifications'));
+            let kv1Notifications = JSON.parse(await kv1.get('notifications'));
 
             //standarizing data structure of newNotifications to be a list of notifications
             if (Array.isArray(newNotifications) == false) {
@@ -31,11 +32,11 @@ export async function onRequest(context) {
                 }
                 newNotifications[i]["timestamp"] = Date.now()-startTime;
                 newNotifications[i]['id'] = crypto.randomUUID();
-                kv1.push(newNotifications[i]);
+                kv1Notifications.push(newNotifications[i]);
             }
 
             //updating kv1
-            await kv1.put('notifications', JSON.stringify(kv1));
+            await kv1.put('notifications', JSON.stringify(kv1Notifications));
     
             return new Response(JSON.stringify(newNotifications), { status: 200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS', 'Access-Control-Allow-Headers': 'office', 'Content-Type': 'application/json'}});
         }
