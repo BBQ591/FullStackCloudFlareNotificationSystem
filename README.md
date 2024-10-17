@@ -1,3 +1,18 @@
+### Project Goals
+This web app mainly allows users to create notifications and save them in a database. On the backend, javascript and cloudflare's services were used to handle POST, GET, and DELETE requests to access and change the notifications in the database. The frontend was developed using React.js to display the notifications on the right side of the screen that were added via the form on the left side.
+
+### File Locations
+Frontend Development:
+    - main file: ./src/App.js
+    - Virtualized List (right side of the website): ./src/containers/VirtualizedList.js
+    - Notification Form (left side of the website): ./src/containers/NotificationForm.js
+
+Backend Development:
+    - api/ai (handles POST): ./functions/api/ai.js
+    - api/notifications (handles POST, GET, DELETE): ./functions/api/notifications.js
+    - api/preferences (handles POST): ./functions/api/preferences.js
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
