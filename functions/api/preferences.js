@@ -1,7 +1,7 @@
 export async function onRequest(context) {
     let {request, env} = context;
     let kv1 = env.kv1;
-    if (request.method == "POST") {
+    if (request.method == "GET") {
     //setting preferences
         let preferences = JSON.stringify({"displayDuration": 5000, "preferredTypes": ["alert", "info"]});
         kv1.put("preferences", preferences);

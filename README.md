@@ -10,7 +10,7 @@ Frontend Development: \
 Backend Development: \
     - api/ai (handles POST): ./functions/api/ai.js \
     - api/notifications (handles POST, GET, DELETE): ./functions/api/notifications.js \
-    - api/preferences (handles POST): ./functions/api/preferences.js
+    - api/preferences (handles GET): ./functions/api/preferences.js
 
 
 # Getting Started with Create React App
