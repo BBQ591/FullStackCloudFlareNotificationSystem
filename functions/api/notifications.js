@@ -37,7 +37,7 @@ export async function onRequest(context) {
             }
 
             //updating kv1
-            await kv1.put('notifications', JSON.stringify(value));
+            await kv1.put('notifications', JSON.stringify(kv1Notifications));
     
             return new Response(JSON.stringify(newNotifications), { status: 200, headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS', 'Access-Control-Allow-Headers': 'office', 'Content-Type': 'application/json'}});
         }
