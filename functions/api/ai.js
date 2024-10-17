@@ -3,13 +3,13 @@ export async function onRequest(context) {
 
     //ai can only do POST request
     if (request.method == "POST") {
-        const requestBody = await request.json();
+        const question = await request.json();
 
         //ask AI question
         const stream = await env.llama3.run("@cf/meta/llama-3-8b-instruct", {
             stream: true,
             messages: [
-                { role: "user", content: "Lets say that we have the sections finance, weather, health, technology. What does this phrase belong to:"+ requestBody['text'] +"Please respond with the word only. no phrases"},
+                { role: "user", content: "Lets say that we have the sections finance, weather, health, technology. What does this phrase belong to:"+ question['text'] +"Please respond with the word only. no phrases"},
             ],
         });
 

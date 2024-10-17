@@ -12,28 +12,25 @@ export async function onRequest(context) {
     }
 
     if (request.method === "POST") {
-        //saving new notifications from this POST request to return later
-        let newNotifications = [];
+        let newNotifications = await request.json();
 
-        const requestBody = await request.json();
         try {
-            let value = JSON.parse(await kv1.get('notifications'));
+            let kv1Notifications = JSON.parse(await kv1.get('notifications'));
 
-            //standarizing data structure of requestBody to be a list of notifications
+            //standarizing data structure of newNotifications to be a list of notifications
             if (Array.isArray(requestBody) == false) {
-                requestBody = [requestBody];
+                newNotifications = [newNotifications];
             }
 
             //validating and adding id/timestamp values to each notification
-            for (let i = 0; i < requestBody.length; i++) {
-                //error checking to make sure that every value in requestBody is valid
-                if (requestBody[i]['type'] == null || requestBody[i]['content']['text'] == null || typeof requestBody[i]['read'] != "boolean") {
+            for (let i = 0; i < newNotifications.length; i++) {
+                //error checking to make sure that every value in newNotifications is valid
+                if (newNotifications[i]['type'] == null || newNotifications[i]['content']['text'] == null || typeof newNotifications[i]['read'] != "boolean") {
                     throw new Error("POST request data is wrong");
                 }
-                requestBody[i]["timestamp"] = Date.now()-startTime;
-                requestBody[i]['id'] = crypto.randomUUID();
-                value.push(requestBody[i]);
-                newNotifications.push(requestBody[i]);
+                newNotifications[i]["timestamp"] = Date.now()-startTime;
+                newNotifications[i]['id'] = crypto.randomUUID();
+                kv1Notifications.push(newNotifications[i]);
             }
 
             //updating kv1
