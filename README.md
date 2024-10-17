@@ -5,12 +5,12 @@ This web app mainly allows users to create and store notifications. On the backe
 Frontend Development: \
     - main file: ./src/App.js \
     - Virtualized List (right side of the website): ./src/containers/VirtualizedList.js \
-    - Notification Form (left side of the website): ./src/containers/NotificationForm.js \
+    - Notification Form (left side of the website): ./src/containers/NotificationForm.js
 
 Backend Development: \
     - api/ai (handles POST): ./functions/api/ai.js \
     - api/notifications (handles POST, GET, DELETE): ./functions/api/notifications.js \
-    - api/preferences (handles POST): ./functions/api/preferences.js \
+    - api/preferences (handles POST): ./functions/api/preferences.js
 
 
 # Getting Started with Create React App
